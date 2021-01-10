@@ -9,16 +9,17 @@ export default function AccountScreen({ navigation }) {
     navigation.navigate("SignIn");
   }
 
-  function create() {
+  function index() {
     AsyncStorage.removeItem("token");
-    navigation.navigate("Create");
+    navigation.navigate("Index");
   }
 
   return (
     <View style={commonStyles.container}>
       <Text>Account Screen</Text>
       <Button title="Sign out" onPress={signOut} />
-      <Button title="Create" onPress={create} />
+     
+      <Button title="Blog" onPress={index} />
     </View>
   );
 }

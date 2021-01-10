@@ -1,12 +1,16 @@
-import { StatusBar } from "expo-status-bar";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { StatusBar } from "expo-status-bar";
 import React, { useState, useEffect } from "react";
-import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
-import SignInScreen from "./screens/SignInScreen";
-import AccountScreen from "./screens/AccountScreen";
-import CreateScreen from "./screens/CreateScreen";
-import { NavigationContainer } from "@react-navigation/native";
+import { StyleSheet, Text, View, ActivityIndicator } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
+import { NavigationContainer } from "@react-navigation/native";
+import SignInScreen from "./screens/SignInScreen";
+import SignUpScreen from "./screens/SignUpScreen";
+import IndexScreen from "./screens/IndexScreen";
+import CreateScreen from "./screens/CreateScreen";
+import EditScreen from "./screens/EditScreen";
+import AccountScreen from "./screens/AccountScreen";
+import ShowScreen from "./screens/ShowScreen";
 
 const Stack = createStackNavigator();
 
@@ -34,12 +38,21 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator
         mode="modal"
-        headerMode="none"
         initialRouteName={signedIn ? "Account" : "SignIn"}
       >
-        <Stack.Screen component={AccountScreen} name="Account" />
-        <Stack.Screen component={SignInScreen} name="SignIn" />
-        <Stack.Screen component={CreateScreen} name="Create" />
+        <Stack.Screen name="Account" component={AccountScreen} />
+
+        <Stack.Screen name="SignIn" component={SignInScreen} />
+
+        <Stack.Screen name="SignUp" component={SignUpScreen} />
+
+        <Stack.Screen name="Index" component={IndexScreen} />
+
+        <Stack.Screen name="Create" component={CreateScreen} />
+
+        <Stack.Screen name="Edit" component={EditScreen} />
+
+        <Stack.Screen name="Show" component={ShowScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -52,4 +65,5 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+
 });
